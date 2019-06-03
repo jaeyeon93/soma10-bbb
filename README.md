@@ -1,4 +1,5 @@
 ## Express
 * 실행
-  > DEBUG=[project_name]:* npm start
+> 1. npm install
+> 2. DEBUG=[project_name]:* npm start
 
