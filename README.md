@@ -130,12 +130,12 @@
 ## STEP
 
 *
-![ToDoList_Layout 001](https://user-images.githubusercontent.com/20623970/59213986-178ce680-8bf1-11e9-8547-44cb661a306b.jpeg)
+<img src="https://user-images.githubusercontent.com/20623970/59214271-bb769200-8bf1-11e9-840b-3d61a498a5ed.jpeg" width="80%">
 
 *
-![ToDoList_Layout 002](https://user-images.githubusercontent.com/20623970/59214031-312e2e00-8bf1-11e9-9ebc-7c9729853042.jpeg)
+<img src="https://user-images.githubusercontent.com/20623970/59214272-bb769200-8bf1-11e9-86e6-c694025064ea.jpeg" width="80%">
 
 *
-![ToDoList_Layout 003](https://user-images.githubusercontent.com/20623970/59214048-3be8c300-8bf1-11e9-9ab3-0c4f82a92bea.jpeg)
+<img src="https://user-images.githubusercontent.com/20623970/59214273-bb769200-8bf1-11e9-9dee-cbbb4b285ddf.jpeg" width="80%">
 
 
