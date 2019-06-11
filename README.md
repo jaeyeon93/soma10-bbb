@@ -127,15 +127,27 @@
 ~~~
 
 
-## STEP
+## 역할 분담
 
-*
+* 성연 - 인덱스 페이지  
 <img src="https://user-images.githubusercontent.com/20623970/59214271-bb769200-8bf1-11e9-840b-3d61a498a5ed.jpeg" width="80%">
 
-*
+    * 사용자 별로 URI 달리해서 리스트 페이지에 접근 할 수 있도록 구현.
+    * 부트스트랩 사용해서 가운데 정렬.   
+    * 2차적으로 로그인 구현.
+
+
+* 재연 - 목록 페이지  
 <img src="https://user-images.githubusercontent.com/20623970/59214272-bb769200-8bf1-11e9-86e6-c694025064ea.jpeg" width="80%">
 
-*
+    * '순서', '제목', '날짜' 별로 보여준다.
+    * pagination 없이 진행 후 pagination 구현. 
+
+
+* 영환 - 입력 폼 페이지  
 <img src="https://user-images.githubusercontent.com/20623970/59214273-bb769200-8bf1-11e9-9dee-cbbb4b285ddf.jpeg" width="80%">
+
+    * '제목', '내용' 입력 받고, '날짜' 를 hidden 으로 넘겨 받는다.
+    * 등록 시, index 에 대한 계산이 필요.
 
 
