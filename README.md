@@ -3,3 +3,5 @@
 > 1. npm install
 > 2. DEBUG=[project_name]:* npm start
 
+* test
+
