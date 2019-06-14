@@ -48,21 +48,31 @@
                 <th>Date</th>
             </tr>
             </thead>
-
             <tbody>
+            <% for (let i = 0; i < todos.length; i++) { %>
             <tr>
-                <th scope="row">1</th>
-                <td><%= title %></td>
-                <td><%= contents %></td>
-                <td><%= date %></td>
+                <th scope="row"><%= i %></th>
+                <td><%= todos[i].title %></td>
+                <td><%= todos[i].contents %></td>
+                <td><%= todos[i].date %></td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
+            <% } %>
             </tbody>
+
+            <!--<tbody>-->
+            <!--<tr>-->
+                <!--<th scope="row">1</th>-->
+                <!--<td><%= title %></td>-->
+                <!--<td><%= contents %></td>-->
+                <!--<td><%= date %></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<th scope="row">2</th>-->
+                <!--<td>Jacob</td>-->
+                <!--<td>Thornton</td>-->
+                <!--<td>@fat</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
         </table>
     </div>
 </div>
