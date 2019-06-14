@@ -4,4 +4,5 @@
 > 2. DEBUG=[project_name]:* npm start
 
 * test
+* test2
 
