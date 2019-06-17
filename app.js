@@ -3,14 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
+var app = express();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var todoRouter = require('./routes/todo');
 
-var app = express();
 
-// view engine setup
+
+// view engine setup, app.set은 변수명을 넣어주는것이다.
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
@@ -25,6 +27,7 @@ app.use('/css', express.static(path.join(__dirname, 'node_modules', 'bootstrap',
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
 // todo router사용
 app.use('/todo', todoRouter);
 
