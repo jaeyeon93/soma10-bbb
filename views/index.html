@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <!-- 부가적인 테마 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/stylesheets/userListBorder.css" >
+    <link rel="stylesheet" href="/stylesheets/userListBorder.css">
+
+    <% include ./registerModal.html %>
+    <% include ./loginModal.html %>
 </head>
 <body>
 <br>
@@ -17,15 +20,34 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">User List</div>
-            <div class="panel-body border"><p style="text-align: center; margin:10px 0px 10px 0px">김재연</p></div>
-            <div class="panel-body border"><p style="text-align: center; margin:10px 0px 10px 0px">박영환</p></div>
-            <div class="panel-body border"><p style="text-align: center; margin:10px 0px 10px 0px">정성연</p></div>
+            <% for(var key in data) {%>
+            <a data-toggle="modal" href="#loginModal">
+<!--            <a href="/user/:<%= key %>">-->
+                <div class="panel-body border" style="text-align: center">
+<!--                    <img src="/image/<%= key %>.png" width="50" height="50">-->
+                    <p style="text-align: center; margin:10px 0px 10px 0px;display: inline">
+                        <%= data[key]["username"] %>
+                    </p>
+                </div>
+            </a>
+            <% } %>
+            <a data-toggle="modal" href="#registerModal">
+                <div class="panel-body border">
+                    <p style="text-align: center; margin:10px 0px 10px 0px">
+                        Add User
+                    </p>
+                </div>
+            </a>
         </div>
     </div>
     <div class="col-md-4"></div>
 </div>
-
 </body>
+
+<!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+
+<script src="/javascript/zzz.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </html>
