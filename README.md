@@ -153,6 +153,3 @@
 
 * test
 
-* test
-* test2
-
