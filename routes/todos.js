@@ -5,7 +5,6 @@ let router = express.Router();
 let TodosModel = require('../models/Todo');
 
 router.get('/', (req, res, next) => {
-  console.log('/todos 호출');
   Todo.find({}, (err, todos) => {
     console.log(todos);
     if (err) return res.status(500).send('Todos 조회 실패');
