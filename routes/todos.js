@@ -1,26 +1,42 @@
 let express = require('express');
 let router = express.Router();
-let Todo = require('../models/Todo');
+
+// let Todo = require('../models/Todo');
+let TodosModel = require('../models/Todo');
 
 router.get('/', (req, res, next) => {
-    Todo.find( {}, (err, todos) => {
-        console.log(todos);
-        if (err) return res.status(500).send('Todos 조회 실패');
-        res.render('todos_list.html', {todos});
-    });
+  console.log('/todos 호출');
+  Todo.find({}, (err, todos) => {
+    console.log(todos);
+    if (err) return res.status(500).send('Todos 조회 실패');
+    res.render('todos_list.html', { todos });
+  });
 });
 
-router.get('/add', (req, res, next) => { res.render('todos_add.html'); });
+router.get('/add', (req, res, next) => {
+  res.render('todos_add.html');
+});
+
+// router.post('/add', (req, res, next) => {
+//     Todo.create({
+//         title: req.body.title,
+//         contents: req.body.contents,
+//         date: req.body.date
+//     }, (err, todo) => {
+//         if (err) return res.status(500).send('Todo 생성 실패');
+//         res.redirect('/todos/')
+//     });
+// });
 
 router.post('/add', (req, res, next) => {
-    Todo.create({
-        title: req.body.title,
-        contents: req.body.contents,
-        date: req.body.date
-    }, (err, todo) => {
-        if (err) return res.status(500).send('Todo 생성 실패');
-        res.redirect('/todos/')
-    });
+  let todo = new TodosModel({
+    title: req.body.title,
+    contents: req.body.contents,
+    date: req.body.date,
+  });
+  todo.save((err) => {
+    res.redirect('/todos/');
+  });
 });
 
 module.exports = router;
