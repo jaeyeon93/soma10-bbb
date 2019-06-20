@@ -7,13 +7,13 @@ router.get('/', function (req, res, next) {
 
     let userData = null;
 
-    User.find(function(err, user){
-        console.log("asd"+ user.toString());
+    User.find(function (err, user) {
+        console.log("asd" + user.toString());
         userData = user;
         rendering();
     });
 
-    function rendering(){
+    function rendering() {
         res.render('index.html', {
             title: 'UserList',
             length: 5,
