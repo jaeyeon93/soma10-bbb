@@ -19,15 +19,10 @@
     "morgan": "~1.9.1",
     "node": "^12.4.0",
     "pug": "^2.0.3",
-    "eslint": "3.x",
-    "eslint-config-airbnb": "^16",
-    "eslint-plugin-import": "^2",
-    "eslint-plugin-jsx-a11y": "^6",
-    "eslint-plugin-react": "^7",
-    "babel-eslint": "^8",
-    "eslint-plugin-compat": "^2"
+    "eslint": "3.x"
   },
   "devDependencies": {
+    "eslint-config-google": "^0.13.0",
     "nodemon": "^1.19.1"
   }
 }

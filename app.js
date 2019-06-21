@@ -1,17 +1,17 @@
-//env
+// Env file
 require('dotenv').config();
 
-let createError = require('http-errors');
-let express = require('express');
+const createError = require('http-errors');
+const express = require('express');
 const mongoose = require('mongoose');
-let path = require('path');
-let cookieParser = require('cookie-parser');
-let logger = require('morgan');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-let app = express();
-let indexRouter = require('./routes/index');
-let usersRouter = require('./routes/users');
-let todoRouter = require('./routes/todos');
+const app = express();
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const todoRouter = require('./routes/todos');
 
 // view engine setup, app.set은 변수명을 넣어주는것이다.
 app.set('views', path.join(__dirname, 'views'));
@@ -26,16 +26,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'js')));
 app.use('/css', express.static(path.join(__dirname, 'node_modules', 'bootstrap', 'dist', 'css')));
 
-// mongoose
 mongoose.Promise = global.Promise;
-
-// connect to mongodb server
-// mongoose.connect(process.env.MONGO_URI)
-//     .then(() => console.log('Successfully connected to mongodb'))
-//     .catch(e => console.error(e));
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true })
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true})
   .then(() => console.log('Successfully connected to mongodb'))
-  .catch(e => console.error(e));
+  .catch((e) => console.error(e));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

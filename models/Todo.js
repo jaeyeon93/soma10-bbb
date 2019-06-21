@@ -10,11 +10,11 @@ const autoIncrement = require('mongoose-auto-increment');
 // });
 
 const todoSchema = new mongoose.Schema({
-  title: { type: String, require: true },
-  contents: { type: String },
+  title: {type: String, require: true},
+  contents: {type: String},
   date: {
     type: Date,
-    default: Date.now() }
+    default: Date.now()},
 });
 
 mongoose.model('Todo', todoSchema);

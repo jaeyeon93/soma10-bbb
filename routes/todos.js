@@ -1,14 +1,14 @@
-let express = require('express');
-let router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 // let Todo = require('../models/Todo');
-let TodosModel = require('../models/Todo');
+const TodosModel = require('../models/Todo');
 
 router.get('/', (req, res, next) => {
   Todo.find({}, (err, todos) => {
     console.log(todos);
     if (err) return res.status(500).send('Todos 조회 실패');
-    res.render('todos_list.html', { todos });
+    res.render('todos_list.html', {todos});
   });
 });
 
