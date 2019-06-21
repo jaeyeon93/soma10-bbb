@@ -43,7 +43,7 @@
         <!-- Default panel contents -->
         <div class="panel-heading">Todo List</div>
         <div class="panel-body">
-            <p>Todo List본문</p>
+            <button type="button" class="btn btn-primary" onclick="location.href='/todos/add'">Todo작성하기</button>
         </div>
 
         <!-- Table -->
@@ -54,6 +54,9 @@
                 <th>Title</th>
                 <th>Contents</th>
                 <th>Date</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+
             </tr>
             </thead>
             <tbody>
@@ -62,7 +65,9 @@
                 <th scope="row"><%= i %></th>
                 <td><%= todos[i].title %></td>
                 <td><%= todos[i].contents %></td>
-                <td><%= todos[i].date %></td>
+                <td><%= moment(todos[i].date).format('YYYY-MM-DD hh:mm:ss') %></td>
+                <td><%= moment(todos[i].created_at).format('YYYY-MM-DD hh:mm:ss') %></td>
+                <!--<td><%= moment(todos[i].updated_at).format('YYYY-MM-DD hh:mm:ss') %></td>-->
             </tr>
             <% } %>
             </tbody>

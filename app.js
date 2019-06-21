@@ -9,6 +9,7 @@ const bodyParser = require('body-parser');
 // 미리 구현한 라우팅 모듈을 가져온다.
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const todoRouter = require('./routes/todos');
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -17,15 +18,11 @@ const app = express();
 // CONNECT TO MONGODB SERVER
 mongoose.connect('mongodb://soma:1234@52.78.201.246:27017/todo', {useNewUrlParser: true});
 const db = mongoose.connection;
-db.once('open', function() {
+db.once('open', () => {
   // CONNECTED TO MONGODB SERVER
   console.log('Connected to mongod server');
 });
 db.on('error', console.error);
-
-// // [CONFIGURE APP TO USE bodyParser]
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -46,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // URL에 따라 라우팅 모듈을 설정한다.
 app.use('/', indexRouter);
 app.use('/user', usersRouter);
+app.use('/todos', todoRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

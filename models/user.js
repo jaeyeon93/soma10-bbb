@@ -9,7 +9,7 @@ const userSchema = new Schema({
   username: String,
 });
 
-// creatr Model
+// create Model
 let User = mongoose.model('user', userSchema);
 
 // const user = new User({
