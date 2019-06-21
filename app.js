@@ -1,11 +1,11 @@
+// use env variable
+require('dotenv').config();
 const createError = require('http-errors');
 const path = require('path');
 // cookie-parser: 접속한 클라이언트의 쿠키 정보에 접근하기 위한 모듈
 const cookieParser = require('cookie-parser');
 // morgan : 클라이언트의 HTTP 요청 정보를 로깅하기 위한 모듈
 const logger = require('morgan');
-// body-parser: 클라이언트의 HTTP 요청 중 POST 요청의 바디 데이터에 접근하기 위한 모듈
-const bodyParser = require('body-parser');
 // 미리 구현한 라우팅 모듈을 가져온다.
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -16,7 +16,8 @@ const mongoose = require('mongoose');
 const app = express();
 
 // CONNECT TO MONGODB SERVER
-mongoose.connect('mongodb://soma:1234@52.78.201.246:27017/todo', {useNewUrlParser: true});
+const MONGO_URI = `${process.env.DB_SCHEMA}${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_URL}`;
+mongoose.connect(MONGO_URI, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.once('open', () => {
   // CONNECTED TO MONGODB SERVER
