@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
-// let Todo = require('../models/Todo');
 const TodosModel = require('../models/Todo');
 
 router.get('/', (req, res, next) => {
@@ -28,7 +26,7 @@ router.get('/add', (req, res, next) => {
 // });
 
 router.post('/add', (req, res, next) => {
-  let todo = new TodosModel({
+  const todo = new TodosModel({
     title: req.body.title,
     contents: req.body.contents,
     date: req.body.date,
