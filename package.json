@@ -1,5 +1,5 @@
 {
-  "name": "todo",
+  "name": "soma10-bbb",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -19,7 +19,8 @@
     "morgan": "~1.9.1",
     "node": "^12.4.0",
     "pug": "^2.0.3",
-    "eslint": "3.x"
+    "eslint": "3.x",
+    "glob": "^7.1.4"
   },
   "devDependencies": {
     "eslint-config-google": "^0.13.0",
