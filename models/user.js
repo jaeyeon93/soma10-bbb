@@ -11,15 +11,4 @@ const userSchema = new Schema({
 //creatr Model
 var User = mongoose.model("user", userSchema);
 
-// const user = new User({
-//     id: "jy",
-//     password: "1234",
-//     username: "김재연"
-// });
-//
-// user.save(function (error, user) {
-//     if(error) console.log("err");
-//     console.log("save oK");
-// });
-
 module.exports = mongoose.model('user', userSchema);

@@ -1,0 +1,30 @@
+<html>
+
+<body>
+<div>
+    <form action="/form/save" method="post">
+        <label>title </label>
+        <input type="text" name="title" placeholder="제목을 입력하세요." />
+        <br/>
+
+        <label>content</label>
+        <textarea name="content" rows="10" placeholder="내용을 입력하세요."></textarea>
+        <br>
+
+        <input type="submit"/>
+        <button type="button" onclick="form_cancel();">취소</button>
+    </form>
+
+</div>
+</body>
+
+<script>
+    function form_cancel() {
+
+        history.back();
+
+    }
+</script>
+
+</html>
+
