@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
     let userData = null;
 
     User.find(function (err, user) {
-        console.log("asd" + user.toString());
+        // console.log("LOG :: " + user.toString());
         userData = user;
         rendering();
     });

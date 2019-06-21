@@ -24,8 +24,8 @@ db.once('open', function () {
 db.on('error', console.error);
 
 // // [CONFIGURE APP TO USE bodyParser]
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
