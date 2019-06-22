@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>TODO LIST</title>
 
-    <!-- 합쳐지고 최소화된 최신 CSS -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <!-- 부가적인 테마 -->
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="/stylesheets/userListBorder.css">
+<!--header-->
+<% include ./template/header.html %>
 
-    <% include ./registerModal.html %>
-    <% include ./loginModal.html %>
-</head>
 <body>
+<% include ./modal/registerModal.html %>
+<% include ./modal/loginModal.html %>
 <br>
 <div class="row">
     <div class="col-md-4"></div>
@@ -23,18 +14,17 @@
         <div class="panel panel-default">
             <div class="panel-heading">User List</div>
             <% for(var key in data) {%>
-            <a data-toggle="modal" href="#loginModal">
-                <!--            <a href="/user/:<%= key %>">-->
-                <div class="panel-body border" style="text-align: center">
-                    <!--                    <img src="/image/<%= key %>.png" width="50" height="50">-->
-                    <p style="text-align: center; margin:10px 0px 10px 0px;display: inline">
-                        <%= data[key]["username"] %>
-                    </p>
-                </div>
+            <a data-toggle="modal" onclick="userListClick('<%= data[key]["id"] %>');">
+            <div class="panel-body border" style="text-align: center;margin: 10px 10px 10px 10px;display: inline-block;">
+                <p style="text-align: center; margin:10px 0px 0px 0px">
+                    <%= data[key]["username"] %>
+                </p>
+            </div>
             </a>
+            <button type="button" class="btn-small" onclick="deleteClick('<%= data[key]["id"] %>')">Del</button>
             <% } %>
             <a data-toggle="modal" href="#registerModal">
-                <div class="panel-body border">
+                <div class="panel-body border" style="text-align: center;margin: 10px 10px 10px 10px;display: inline-block;">
                     <p style="text-align: center; margin:10px 0px 10px 0px">
                         Add User
                     </p>
@@ -43,13 +33,15 @@
         </div>
     </div>
     <div class="col-md-4"></div>
+
 </div>
+
+<!-- footer 위치-->
+<% include ./template/footer.html %>
+
 </body>
 
 <!-- jQuery (부트스트랩의 자바스크립트 플러그인을 위해 필요합니다) -->
+<script src="/javascript/indexMethod.js"></script>
 
-<script src="/javascript/zzz.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </html>
