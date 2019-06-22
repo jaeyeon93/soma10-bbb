@@ -38,7 +38,8 @@ const clickLogin = () => {
         success: [function (result) {
             console.log(result.result);
             if (result.result === true) {
-                const url = "http://localhost:3000/user/:" + id + ".html";
+                // const url = "http://localhost:3000/user/:" + id + ".html";
+                const url = "http://localhost:3000/todos/:"+id;
                 location.href = url;
             } else {
                 location.href = "http://localhost:3000";

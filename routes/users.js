@@ -52,7 +52,8 @@ router.get('/:username', function (req, res, next) {
 
     User.find(function (err, user) {
         if (true) {
-            success();
+            location.href="./todos"
+            // success();
         } else {
             res.render('error.html', {});
         }
