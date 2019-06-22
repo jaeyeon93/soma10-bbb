@@ -26,7 +26,7 @@ router.post('/login', function (req, res, next) {
 
 router.delete('/delete', function (req, res, next) {
     console.log(req.body.id);
-    User.deleteOne({id:req.body.id}, function (err, user) {
+    User.deleteOne({id: req.body.id}, function (err, user) {
         if (err) return res.status(500).send("User 삭제 실패");
         res.send({result: true});
     });

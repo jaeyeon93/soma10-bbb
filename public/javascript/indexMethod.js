@@ -23,7 +23,7 @@ const deleteClick = userId => {
     })
 }
 
-const clickLogin = () =>{
+const clickLogin = () => {
     const id = $('#loginId').text();
     const password = $('#loginPassword').val();
 
@@ -48,7 +48,7 @@ const clickLogin = () =>{
     })
 }
 
-const clickRegister = () =>{
+const clickRegister = () => {
     let id = $("#registerId").val();
     let username = $("#registerUsername").val();
     let password = $("#registerPassword").val();

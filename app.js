@@ -20,8 +20,8 @@ const MONGO_URI = `${process.env.DB_SCHEMA}${process.env.DB_USER}:${process.env.
 mongoose.connect(MONGO_URI, {useNewUrlParser: true});
 const db = mongoose.connection;
 db.once('open', () => {
-  // CONNECTED TO MONGODB SERVER
-  console.log('Connected to mongod server');
+    // CONNECTED TO MONGODB SERVER
+    console.log('Connected to mongod server');
 });
 db.on('error', console.error);
 
@@ -48,18 +48,18 @@ app.use('/todos', todoRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error.html');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error.html');
 });
 
 module.exports = app;
