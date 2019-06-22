@@ -4,8 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 //morgan : 클라이언트의 HTTP 요청 정보를 로깅하기 위한 모듈
 const logger = require('morgan');
-//body-parser: 클라이언트의 HTTP 요청 중 POST 요청의 바디 데이터에 접근하기 위한 모듈
-const bodyParser = require('body-parser');
 // 미리 구현한 라우팅 모듈을 가져온다.
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -22,10 +20,6 @@ db.once('open', function () {
     console.log("Connected to mongod server");
 });
 db.on('error', console.error);
-
-// // [CONFIGURE APP TO USE bodyParser]
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

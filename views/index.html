@@ -15,17 +15,16 @@
             <div class="panel-heading">User List</div>
             <% for(var key in data) {%>
             <a data-toggle="modal" onclick="userListClick('<%= data[key]["id"] %>');">
-<!--            <a href="/user/:<%= key %>">-->
-                <div class="panel-body border" style="text-align: center">
-<!--                    <img src="/image/<%= key %>.png" width="50" height="50">-->
-                    <p style="text-align: center; margin:10px 0px 10px 0px;display: inline">
-                        <%= data[key]["username"] %>
-                    </p>
-                </div>
+            <div class="panel-body border" style="text-align: center;margin: 10px 10px 10px 10px;display: inline-block;">
+                <p style="text-align: center; margin:10px 0px 0px 0px">
+                    <%= data[key]["username"] %>
+                </p>
+            </div>
             </a>
+            <button type="button" class="btn-small" onclick="deleteClick('<%= data[key]["id"] %>')">Del</button>
             <% } %>
             <a data-toggle="modal" href="#registerModal">
-                <div class="panel-body border">
+                <div class="panel-body border" style="text-align: center;margin: 10px 10px 10px 10px;display: inline-block;">
                     <p style="text-align: center; margin:10px 0px 10px 0px">
                         Add User
                     </p>
@@ -37,8 +36,8 @@
 
 </div>
 
-    <!-- footer 위치-->
-    <% include ./template/footer.html %>
+<!-- footer 위치-->
+<% include ./template/footer.html %>
 
 </body>
 

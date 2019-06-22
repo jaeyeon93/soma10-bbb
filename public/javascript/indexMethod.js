@@ -1,48 +1,76 @@
-
-function userListClick(username) {
+const userListClick = username => {
     $("#loginId").html(username);
     $("#loginModal").modal('show');
 }
 
-function clickLogin() {
-    let id = $('#loginId').text();
-    let password = $('#loginPassword').val();
-
+const deleteClick = userId => {
     $.ajax({
-        url: "http://localhost:3000/user/login", // 클라이언트가 요청을 보낼 서버의 URL 주소
+        url: "http://localhost:3000/user/delete",
         data: {
-            id: id,
-            password: password,
-        },               // HTTP 요청과 함께 서버로 보낼 데이터
-        type: "POST",                             // HTTP 요청 방식(GET, POST)
-        dataType: "json",                         // 서버에서 보내줄 데이터의 타입
-        success : [function (result) {
+            id: userId,
+        },
+        type: "post",
+        dataType: "json",
+        success: [function (result) {
             console.log(result.result);
-            if(result.result === true){
-                const url = "http://localhost:3000/user/:"+id+".html";
-                location.href= url;
-            }else{
-                location.href="http://localhost:3000";
+            if (result.result === true) {
+                location.href = "http://localhost:3000";
+            } else {
+                location.href = "http://localhost:3000";
+                alert("비밀번호가 틀렸습니다.");
             }
         }]
     })
 }
 
-function clickRegister() {
+const clickLogin = () =>{
+    const id = $('#loginId').text();
+    const password = $('#loginPassword').val();
+
+    $.ajax({
+        url: "http://localhost:3000/user/login",
+        data: {
+            id: id,
+            password: password,
+        },
+        type: "POST",
+        dataType: "json",
+        success: [function (result) {
+            console.log(result.result);
+            if (result.result === true) {
+                const url = "http://localhost:3000/user/:" + id + ".html";
+                location.href = url;
+            } else {
+                location.href = "http://localhost:3000";
+                alert("비밀번호가 틀렸습니다.");
+            }
+        }]
+    })
+}
+
+const clickRegister = () =>{
     let id = $("#registerId").val();
     let username = $("#registerUsername").val();
     let password = $("#registerPassword").val();
 
     $.ajax({
-        url: "http://localhost:3000/user/register", // 클라이언트가 요청을 보낼 서버의 URL 주소
+        url: "http://localhost:3000/user/register",
         data: {
             id: id,
             username: username,
             password: password,
-        },               // HTTP 요청과 함께 서버로 보낼 데이터
-        type: "GET",                             // HTTP 요청 방식(GET, POST)
-        dataType: "json"                      // 서버에서 보내줄 데이터의 타입
-
+        },
+        type: "POST",
+        dataType: "json",
+        success: [function (result) {
+            console.log(result.result);
+            if (result.result === true) {
+                location.href = "http://localhost:3000";
+                alert("회원가입 되었습니다.");
+            } else {
+                //TODO: 회원가입이 안된 경우, 아이디 중첩확인, db 에러 확인 . 사용자 알려줌
+                location.href = "http://localhost:3000";
+            }
+        }]
     });
 }
-
