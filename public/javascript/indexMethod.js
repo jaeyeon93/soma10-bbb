@@ -9,7 +9,7 @@ const deleteClick = userId => {
         data: {
             id: userId,
         },
-        type: "post",
+        type: "DELETE",
         dataType: "json",
         success: [function (result) {
             console.log(result.result);

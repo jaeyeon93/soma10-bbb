@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const User = require('../models/user.js');
 
 /* GET users listing. */
@@ -24,9 +24,9 @@ router.post('/login', function (req, res, next) {
 
 });
 
-router.post('/delete', function (req, res, next) {
+router.delete('/delete', function (req, res, next) {
     console.log(req.body.id);
-    User.remove({id:req.body.id}, function (err, user) {
+    User.deleteOne({id:req.body.id}, function (err, user) {
         if (err) return res.status(500).send("User 삭제 실패");
         res.send({result: true});
     });
