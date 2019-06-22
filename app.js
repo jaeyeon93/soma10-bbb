@@ -6,6 +6,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 // morgan : 클라이언트의 HTTP 요청 정보를 로깅하기 위한 모듈
 const logger = require('morgan');
+const db = require('./db/db');
 
 // 미리 구현한 라우팅 모듈을 가져온다.
 const indexRouter = require('./routes/index');
@@ -14,19 +15,8 @@ const todoRouter = require('./routes/todos');
 const formRouter = require('./routes/form');
 
 const express = require('express');
-const mongoose = require('mongoose');
 
 const app = express();
-
-// CONNECT TO MONGODB SERVER
-const MONGO_URI = `${process.env.DB_SCHEMA}${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_URL}`;
-mongoose.connect(MONGO_URI, {useNewUrlParser: true});
-const db = mongoose.connection;
-db.once('open', () => {
-  // CONNECTED TO MONGODB SERVER
-  console.log('Connected to mongod server');
-});
-db.on('error', console.error);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
