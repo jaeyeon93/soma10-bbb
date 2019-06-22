@@ -20,8 +20,8 @@ const deleteClick = userId => {
                 alert("비밀번호가 틀렸습니다.");
             }
         }]
-    })
-}
+    });
+};
 
 const clickLogin = () =>{
     const id = $('#loginId').text();
@@ -44,8 +44,8 @@ const clickLogin = () =>{
                 alert("비밀번호가 틀렸습니다.");
             }
         }]
-    })
-}
+    });
+};
 
 const clickRegister = () =>{
     let id = $("#registerId").val();
@@ -72,4 +72,4 @@ const clickRegister = () =>{
             }
         }]
     });
-}
+};

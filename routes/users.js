@@ -63,7 +63,7 @@ router.get('/:username', (req, res, next) => {
             title: 'User',
             username: req.params.username
         });
-    }
+    };
 
 });
 
