@@ -13,7 +13,7 @@ const deleteClick = userId => {
         dataType: "json",
         success: [function (result) {
             console.log(result.result);
-            if (result.result === true) {
+            if (result.result) {
                 location.href = "./";
             } else {
                 location.href = "./";
@@ -36,9 +36,8 @@ const clickLogin = () =>{
         type: "POST",
         dataType: "json",
         success: [function (result) {
-            console.log(result.result);
-            if (result.result === true) {
-                const url = "./user/:" + id + ".html";
+            if (result.result) {
+                const url = `./user/:"${id}".html`;
                 location.href = url;
             } else {
                 location.href = "./";

@@ -3,7 +3,9 @@ const router = express.Router();
 const User = require('../models/user.js');
 
 router.get('/', (req, res, next) => {
+
   let userData = null;
+
   const rendering = () => {
     res.render('index.html', {
       title: 'UserList',

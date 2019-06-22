@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/user.js');
 
 /* GET users listing. */
-router.post('/login', function (req, res, next) {
+router.post('/login', (req, res, next) => {
 
     User.findOne({id: req.body.id}, function (err, data) {
         if (err) {
@@ -24,7 +24,7 @@ router.post('/login', function (req, res, next) {
 
 });
 
-router.delete('/delete', function (req, res, next) {
+router.delete('/delete', (req, res, next) => {
     console.log(req.body.id);
     User.deleteOne({id:req.body.id}, function (err, user) {
         if (err) return res.status(500).send("User 삭제 실패");
@@ -32,7 +32,7 @@ router.delete('/delete', function (req, res, next) {
     });
 });
 
-router.post('/register', function (req, res, next) {
+router.post('/register', (req, res, next) =>{
     console.log(req.body.id);
     console.log(req.body.password);
     console.log(req.body.username);
@@ -48,7 +48,7 @@ router.post('/register', function (req, res, next) {
         });
 });
 
-router.get('/:username', function (req, res, next) {
+router.get('/:username', (req, res, next) => {
 
     User.find(function (err, user) {
         if (true) {
@@ -58,7 +58,7 @@ router.get('/:username', function (req, res, next) {
         }
     });
 
-    function success() {
+    const success = () => {
         res.render('user.html', {
             title: 'User',
             username: req.params.username
