@@ -26,5 +26,17 @@
   "devDependencies": {
     "eslint-config-google": "^0.13.0",
     "nodemon": "^1.19.1"
-  }
+  },
+  "description": "* 'To Do List' 만들기",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkyounghwan/soma10-bbb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkyounghwan/soma10-bbb/issues"
+  },
+  "homepage": "https://github.com/parkyounghwan/soma10-bbb#readme"
 }
