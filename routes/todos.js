@@ -17,18 +17,18 @@ router.get('/:username', (req, res, next) => {
 });
 
 router.get('/add', (req, res, next) => {
-  res.render('todos_add.html');
+    res.render('form.html', {title: 'username'});   // yhpark 수정함 (todos_add -> form 연결)
 });
 
 router.post('/add', (req, res, next) => {
-  let todo = new TodosModel({
-    title: req.body.title,
-    contents: req.body.contents,
-    date: req.body.date,
-  });
-  todo.save((err) => {
-    res.redirect('/todos/');
-  });
+    let todo = new TodosModel({
+        title: req.body.title,
+        contents: req.body.contents,
+        date: req.body.date,
+    });
+    todo.save((err) => {
+        res.redirect('/todos/');
+    });
 });
 
 module.exports = router;
