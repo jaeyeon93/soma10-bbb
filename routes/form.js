@@ -17,10 +17,9 @@ router.post('/save', function (req, res) {
         },
 
         function (err, board) {
+
             if (err) return res.status(500).send("Board 저장 실패");
             else {
-
-                console.log(Board.toString());
 
                 //todo, user 별로 list 페이지로 넘기기.
                 res.redirect('/todos/');
