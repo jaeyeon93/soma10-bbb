@@ -1,15 +1,18 @@
-// Mongoose의 Schema는 MongoDB에 저장되는 document의 Data 구조
-// 즉 필드 타입에 관한 정보를 JSON 형태로 정의한 것으로 RDBMS의 테이블 정의와 유사한 개념
 const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
+const db = require('../db/db');
+
+const connection = db;
+
+autoIncrement.initialize(connection);
 
 const userSchema = new Schema({
   id: String,
   password: String,
-  username: String,
+  username: String
 });
 
-// create Model
-let User = mongoose.model('user', userSchema);
+userSchema.plugin(autoIncrement.plugin, 'user');
 
 module.exports = mongoose.model('user', userSchema);

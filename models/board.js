@@ -9,13 +9,14 @@ autoIncrement.initialize(connection);
 
 const boardSchema = new Schema(
     {
-        username: {type: String, required: true},
+        user: { },
         title: {type: String, required: true},
         content: String,
         createDate: {type: Date, default: Date.now}
     }
 );
 
+// boardSchema.plugin(autoIncrement.plugin, 'board');
 boardSchema.plugin(autoIncrement.plugin, { model: 'Board', field: 'boardId'});
 
 module.exports = mongoose.model('board', boardSchema);

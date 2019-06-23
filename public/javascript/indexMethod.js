@@ -37,7 +37,7 @@ const clickLogin = () =>{
         dataType: "json",
         success: [function (result) {
             if (result.result) {
-                const url = `./user/:"${id}".html`;
+                const url = "./todos/"+id;
                 location.href = url;
             } else {
                 location.href = "./";

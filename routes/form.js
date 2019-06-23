@@ -10,7 +10,7 @@ router.get('/', function (req, res) {
 router.post('/save', function (req, res) {
 
     Board.create({
-            username: req.body.username,
+            user: { },
             title: req.body.title,
             content: req.body.content,
             createDate: Date.now()

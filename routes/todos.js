@@ -3,7 +3,7 @@ const router = express.Router();
 const TodosModel = require('../models/Todo');
 const moment = require('moment');
 
-router.get('/', (req, res, next) => {
+router.get('/:username', (req, res, next) => {
     TodosModel.find({}, (err, todos) => {
         console.log(todos[15].created_at);
         console.log(todos[15].updated_at);
