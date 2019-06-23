@@ -22,7 +22,7 @@ router.post('/save', function (req, res) {
             else {
 
                 //todo, user 별로 list 페이지로 넘기기.
-                res.redirect('/todos/');
+                res.redirect(`/todos/${req.body.username}`);
 
             }
         }

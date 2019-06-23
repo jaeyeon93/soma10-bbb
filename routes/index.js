@@ -16,7 +16,6 @@ router.get('/', (req, res, next) => {
   };
 
   User.find((err, user) => {
-    console.log('asd' + user.toString());
     userData = user;
     rendering();
   });
