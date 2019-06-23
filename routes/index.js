@@ -1,9 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const User = require('../models/user.js');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', (req, res, next) => {
+    let userData = null;
+    const rendering = () => {
+        res.render('index.html', {
+            title: 'UserList',
+            length: 5,
+            data: userData,
+        });
+    };
+
+    User.find((err, user) => {
+        userData = user;
+        rendering();
+    });
 });
 
 module.exports = router;
