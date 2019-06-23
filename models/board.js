@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
 const Schema = mongoose.Schema;
-const User = require('user.js');
+const db = require('../db/db');
 
-const connection = mongoose.createConnection("mongodb://soma:1234@52.78.201.246:27017/todo");
+const connection = db;
 
 autoIncrement.initialize(connection);
 
@@ -12,7 +12,7 @@ const countSchema = new Schema({
 });
 
 const boardSchema = new Schema({
-    username: { type: Schema.Types.ObjectId, ref: 'User' },
+    username: { type: String, required: true },
     title: { type: String, required: true },
     content: String,
     createDate: { type: Date, default: Date.now }
@@ -21,6 +21,13 @@ const boardSchema = new Schema({
 boardSchema.plugin(autoIncrement.plugin, { model: 'Board', field: 'boardId'});
 countSchema.plugin(autoIncrement.plugin, 'Count');
 
-var Form = mongoose.model('formInfo', formInfoSchema);
+let Board = mongoose.model('board', boardSchema);
 
-module.exports = mongoose.model( 'formInfo', formInfoSchema);
+Board.prototype.toString = function boardToString() {
+    return 'username: ' + this.username +
+        'title: ' + this.title +
+        'content: ' + this.content +
+        'crateDate: ' + this.createDate;
+};
+
+module.exports = mongoose.model( 'board', boardSchema);

@@ -6,3 +6,24 @@ body {
 a {
     color: #00B7FF;
 }
+
+.form-container {
+    border: 1px lightgray solid;
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+.form-title {
+    display: inline-block;
+    width: 100%;
+}
+
+.form-content {
+    border: 1px lightgray solid;
+    display: block;
+    width: 100%;
+}
+
+#form-cancel-btn {
+    margin-left: 3px;
+}
