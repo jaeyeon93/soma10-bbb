@@ -30,5 +30,40 @@ router.post('/save', function (req, res) {
 
 });
 
+router.post('/update', function (req, res) {
+
+    const id = req.body.id;
+    const title = req.body.title;
+    const content = req.body.content;
+
+    console.log(id+title);
+
+        Board.findOne({boardId: id}, function (err, board) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("updatedataaaaaaaa" + board.toString());  // yhpark 수정함 (todos_add -> form 연결)
+            board.title = title;
+            board.content = content;
+            const username = board.username;
+            //날짜 변경
+            board.save(function(err){
+                if(err) res.status(500).json({error: 'failed to update'});
+                res.statusCode = 302;
+                res.setHeader("Location", `http://localhost:3000/todos/${username}`);
+                res.end();
+            });
+            // res.render('todos_list.html', {
+            //     title: data.username,
+            //     data: data,
+            //     id: id
+            // });
+        }
+    });
+
+
+
+});
+
 
 module.exports = router;

@@ -6,38 +6,54 @@ const moment = require('moment');
 
 router.get('/:username', (req, res, next) => {
 
-  //TODO :: 재연형님 username 으로 테이블 다르게 보여주는거 해주시면 감사하곘습니다 .
-  const username = req.params.username;
+    //TODO :: 재연형님 username 으로 테이블 다르게 보여주는거 해주시면 감사하곘습니다 .
+    const username = req.params.username;
 
-  console.log(username);
+    // console.log(username);
 
 
     boardModel.find().where("username").equals(username)
         .then((board) => {
-            console.log(board.toString());
-            res.render('todos_list.html',{board,username});
+                // console.log(board.toString());
+                res.render('todos_list.html', {board, username});
             }
-
         )
         .catch(e => res.status(500).send('boards 조회 실패'))
 
-  // TodosModel.find({}, (err, todos) => {
-  //   console.log(todos[15].created_at);
-  //   console.log(todos[15].updated_at);
-  //   if (err) return res.status(500).send('Todos 조회 실패');
-  //   res.render('todos_list.html', { moment,username});
-  // });
+    // TodosModel.find({}, (err, todos) => {
+    //   console.log(todos[15].created_at);
+    //   console.log(todos[15].updated_at);
+    //   if (err) return res.status(500).send('Todos 조회 실패');
+    //   res.render('todos_list.html', { moment,username});
+    // });
 });
 
 router.get('/add/:username', (req, res, next) => {
 
     const username = req.params.username;
 
-
-
-
-
     res.render('form.html', {title: username});   // yhpark 수정함 (todos_add -> form 연결)
+});
+
+router.get('/update/:id', (req, res, next) => {
+
+    const id = req.params.id;
+
+    console.log("boardid" + id);
+
+    boardModel.findOne({boardId: id}, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("updatedata" + data.toString());  // yhpark 수정함 (todos_add -> form 연결)
+            res.render('updateform.html', {
+                title: data.username,
+                data : data,
+                id : id
+            });
+        }
+    });
+
 });
 
 router.post('/add', (req, res, next) => {
@@ -50,5 +66,24 @@ router.post('/add', (req, res, next) => {
         res.redirect('/todos/');
     });
 });
+
+
+router.delete('/', (req, res, next) => {
+
+    const id = req.body.id;
+
+    boardModel.deleteOne({_id: id}, function (err, user) {
+        if (err) return res.status(500).send("board 삭제 실패");
+        res.send({result: true});
+    });
+});
+
+router.put('/', (req, res, next) => {
+
+    const id = req.body.id;
+
+    res.send({result: true});
+});
+
 
 module.exports = router;
