@@ -5,7 +5,7 @@ const userListClick = username => {
 
 const deleteClick = userId => {
     $.ajax({
-        url: "http://localhost:3000/user/delete",
+        url: "./user/delete",
         data: {
             id: userId,
         },
@@ -13,22 +13,22 @@ const deleteClick = userId => {
         dataType: "json",
         success: [function (result) {
             console.log(result.result);
-            if (result.result === true) {
-                location.href = "http://localhost:3000";
+            if (result.result) {
+                location.href = "./";
             } else {
-                location.href = "http://localhost:3000";
+                location.href = "./";
                 alert("비밀번호가 틀렸습니다.");
             }
         }]
-    })
-}
+    });
+};
 
 const clickLogin = () =>{
     const id = $('#loginId').text();
     const password = $('#loginPassword').val();
 
     $.ajax({
-        url: "http://localhost:3000/user/login",
+        url: "./user/login",
         data: {
             id: id,
             password: password,
@@ -36,17 +36,16 @@ const clickLogin = () =>{
         type: "POST",
         dataType: "json",
         success: [function (result) {
-            console.log(result.result);
-            if (result.result === true) {
-                const url = "http://localhost:3000/user/:" + id + ".html";
+            if (result.result) {
+                const url = `./user/:"${id}".html`;
                 location.href = url;
             } else {
-                location.href = "http://localhost:3000";
+                location.href = "./";
                 alert("비밀번호가 틀렸습니다.");
             }
         }]
-    })
-}
+    });
+};
 
 const clickRegister = () =>{
     let id = $("#registerId").val();
@@ -54,7 +53,7 @@ const clickRegister = () =>{
     let password = $("#registerPassword").val();
 
     $.ajax({
-        url: "http://localhost:3000/user/register",
+        url: "./user/register",
         data: {
             id: id,
             username: username,
@@ -65,12 +64,12 @@ const clickRegister = () =>{
         success: [function (result) {
             console.log(result.result);
             if (result.result === true) {
-                location.href = "http://localhost:3000";
+                location.href = "./";
                 alert("회원가입 되었습니다.");
             } else {
                 //TODO: 회원가입이 안된 경우, 아이디 중첩확인, db 에러 확인 . 사용자 알려줌
-                location.href = "http://localhost:3000";
+                location.href = "./";
             }
         }]
     });
-}
+};
