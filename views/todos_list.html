@@ -41,9 +41,11 @@
 <div class="container-fluid">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">Todo List</div>
+        <div class="panel-heading"> Todo List <%= username %></div>
         <div class="panel-body">
-            <button type="button" class="btn btn-primary" onclick="location.href='/todos/add'">Todo작성하기</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='/todos/add/<%= username %>'">
+                Todo작성하기
+            </button>
         </div>
 
         <!-- Table -->
@@ -53,23 +55,28 @@
                 <th>Index</th>
                 <th>Title</th>
                 <th>Contents</th>
-                <th>Date</th>
+                <th>username</th>
                 <th>Created_at</th>
-                <th>Updated_at</th>
-
+                <th>수정</th>
+                <th>삭제</th>
             </tr>
             </thead>
             <tbody>
-            <% for (let i = 0; i < todos.length; i++) { %>
+            <% for(var key in board) {%>
             <tr>
-                <th scope="row"><%= i %></th>
-                <td><%= todos[i].title %></td>
-                <td><%= todos[i].contents %></td>
-                <td><%= moment(todos[i].date).format('YYYY-MM-DD hh:mm:ss') %></td>
-                <td><%= moment(todos[i].created_at).format('YYYY-MM-DD hh:mm:ss') %></td>
-                <!--<td><%= moment(todos[i].updated_at).format('YYYY-MM-DD hh:mm:ss') %></td>-->
+                <th scope="row"><%= key%></th>
+                <td><%= board[key]["title"]%></td>
+                <td><%= board[key]["content"]%></td>
+                <td><%= board[key]["username"]%></td>
+                <td><%= board[key]["createDate"]%></td>
+                <td>
+                    <button type="button" class="btn btn-success">수정</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger">삭제</button>
+                </td>
             </tr>
-            <% } %>
+            <% }%>
             </tbody>
 
         </table>
