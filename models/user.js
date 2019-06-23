@@ -3,11 +3,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  id: String,
-  password: String,
-  username: String,
-});
+const userSchema = new Schema(
+    {
+        id: String,
+        password: String,
+        username: String,
+    }
+);
 
 // create Model
 let User = mongoose.model('user', userSchema);
