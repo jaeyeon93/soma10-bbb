@@ -26,18 +26,19 @@ router.post('/login', (req, res, next) => {
 
 router.delete('/delete', (req, res, next) => {
     console.log(req.body.id);
-    User.deleteOne({id:req.body.id}, function (err, user) {
+    User.deleteOne({id: req.body.id}, function (err, user) {
         if (err) return res.status(500).send("User 삭제 실패");
         res.send({result: true});
     });
 });
 
-router.post('/register', (req, res, next) =>{
+router.post('/register', (req, res, next) => {
     console.log(req.body.id);
     console.log(req.body.password);
     console.log(req.body.username);
 
-    User.create({
+    User.create(
+        {
             id: req.body.id,
             username: req.body.username,
             password: req.body.password
