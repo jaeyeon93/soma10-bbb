@@ -1,25 +1,24 @@
-const userListClick = username => {
-    $("#loginId").html(username);
-    $("#loginModal").modal('show');
-}
+const userListClick = (username) => {
+    $('#loginId').html(username);
+    $('#loginModal').modal('show');
+};
 
-const deleteClick = userId => {
+const deleteClick = (userId) => {
     $.ajax({
-        url: "./user/delete",
+        url: './user/delete',
         data: {
             id: userId,
         },
-        type: "DELETE",
-        dataType: "json",
-        success: [function (result) {
-            console.log(result.result);
+        type: 'DELETE',
+        dataType: 'json',
+        success: [function(result) {
             if (result.result) {
-                location.href = "./";
+                location.href = './';
             } else {
-                location.href = "./";
-                alert("비밀번호가 틀렸습니다.");
+                location.href = './';
+                alert('비밀번호가 틀렸습니다.');
             }
-        }]
+        }],
     });
 };
 
@@ -28,50 +27,50 @@ const clickLogin = () => {
     const password = $('#loginPassword').val();
 
     $.ajax({
-        url: "./user/login",
+        url: './user/login',
         data:
             {
                 id: id,
                 password: password,
             },
-        type: "POST",
-        dataType: "json",
-        success: [function (result) {
+        type: 'POST',
+        dataType: 'json',
+        success: [function(result) {
             if (result.result) {
-                const url = "./todos/"+id;
+                const url = './todos/' + id;
                 location.href = url;
             } else {
-                location.href = "./";
-                alert("비밀번호가 틀렸습니다.");
+                location.href = './';
+                alert('비밀번호가 틀렸습니다.');
             }
-        }]
+        }],
     });
 };
 
 const clickRegister = () => {
-    let id = $("#registerId").val();
-    let username = $("#registerUsername").val();
-    let password = $("#registerPassword").val();
+    const id = $('#registerId').val();
+    const username = $('#registerUsername').val();
+    const password = $('#registerPassword').val();
 
     $.ajax({
-        url: "./user/register",
+        url: './user/register',
         data:
             {
                 id: id,
                 username: username,
                 password: password,
             },
-        type: "POST",
-        dataType: "json",
-        success: [function (result) {
+        type: 'POST',
+        dataType: 'json',
+        success: [function(result) {
             console.log(result.result);
             if (result.result === true) {
-                location.href = "./";
-                alert("회원가입 되었습니다.");
+                location.href = './';
+                alert('회원가입 되었습니다.');
             } else {
-                //TODO: 회원가입이 안된 경우, 아이디 중첩확인, db 에러 확인 . 사용자 알려줌
-                location.href = "./";
+                // TODO: 회원가입이 안된 경우, 아이디 중첩확인, db 에러 확인 . 사용자 알려줌
+                location.href = './';
             }
-        }]
+        }],
     });
 };

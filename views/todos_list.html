@@ -70,10 +70,10 @@
                 <td><%= board[key]["username"]%></td>
                 <td><%= board[key]["createDate"]%></td>
                 <td>
-                    <button type="button" class="btn btn-success">수정</button>
+                    <button type="button" class="btn btn-success" onclick="todoUpdate('<%= board[key]["boardId"]%>',`<%= username %>`)">수정</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger">삭제</button>
+                    <button type="button" class="btn btn-danger" onclick="todoDelete('<%= board[key]["_id"]%>')">삭제</button>
                 </td>
             </tr>
             <% }%>
@@ -83,11 +83,13 @@
     </div>
 </div>
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!--<script src="/js/bootstrap.min.js"></script>-->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
+
+
+<script src="/javascript/formMethod.js"></script>
 </body>
 </html>
