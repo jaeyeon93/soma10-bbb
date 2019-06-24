@@ -7,17 +7,14 @@ router.get('/', function(req, res) {
   res.render('form.html', {title: 'username'});
 });
 
-router.post('/save', function(req, res) {
-
+router.post('/save', (req, res) => {
   Board.create({
     username: req.body.username,
     title: req.body.title,
     content: req.body.content,
     createDate: Date.now(),
   },
-
-  function(err, board) {
-
+  (err, board) => {
     if (err) return res.status(500).send('Board 저장 실패');
     else {
       // todo, user 별로 list 페이지로 넘기기.

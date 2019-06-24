@@ -50,7 +50,6 @@ router.post('/register', (req, res, next) => {
 });
 
 router.get('/:username', (req, res, next) => {
-
   User.find(function(err, user) {
     if (true) {
       success();
@@ -65,7 +64,6 @@ router.get('/:username', (req, res, next) => {
       username: req.params.username,
     });
   };
-
 });
 
 module.exports = router;
