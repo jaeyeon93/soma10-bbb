@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "mocha"
+    "test": "mocha test"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -26,7 +26,7 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
-    "eslint": ">=5.16.0",
+    "eslint": "^6.0.0",
     "eslint-config-google": "^0.13.0",
     "mocha": "^6.1.4"
   },
