@@ -24,8 +24,7 @@
     "pug": "^2.0.3"
   },
   "devDependencies": {
-    "eslint-config-google": "^0.13.0",
-    "nodemon": "^1.19.1"
+    "eslint-config-google": "^0.13.0"
   },
   "description": "* 'To Do List' 만들기",
   "main": "app.js",

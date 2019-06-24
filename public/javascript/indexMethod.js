@@ -23,16 +23,17 @@ const deleteClick = userId => {
     });
 };
 
-const clickLogin = () =>{
+const clickLogin = () => {
     const id = $('#loginId').text();
     const password = $('#loginPassword').val();
 
     $.ajax({
         url: "./user/login",
-        data: {
-            id: id,
-            password: password,
-        },
+        data:
+            {
+                id: id,
+                password: password,
+            },
         type: "POST",
         dataType: "json",
         success: [function (result) {
@@ -47,18 +48,19 @@ const clickLogin = () =>{
     });
 };
 
-const clickRegister = () =>{
+const clickRegister = () => {
     let id = $("#registerId").val();
     let username = $("#registerUsername").val();
     let password = $("#registerPassword").val();
 
     $.ajax({
         url: "./user/register",
-        data: {
-            id: id,
-            username: username,
-            password: password,
-        },
+        data:
+            {
+                id: id,
+                username: username,
+                password: password,
+            },
         type: "POST",
         dataType: "json",
         success: [function (result) {
