@@ -2,45 +2,45 @@ const formCancel = () => {
     history.back();
 };
 
-const todoDelete = (id) =>{
+const todoDelete = (id) => {
     console.log(id);
     $.ajax({
-        url: "./",
+        url: './',
         data:
             {
-                id: id
+                id: id,
             },
-        type: "DELETE",
-        dataType: "json",
-        success: [function (result) {
+        type: 'DELETE',
+        dataType: 'json',
+        success: [function(result) {
             if (result.result) {
                 location.reload();
             } else {
-                location.href = "./";
-                alert("삭제실패.");
+                location.href = './';
+                alert('삭제실패.');
             }
-        }]
+        }],
     });
 };
 
-const todoUpdate = (id,username) => {
+const todoUpdate = (id, username) => {
     console.log(id);
     console.log(username);
     $.ajax({
-        url: "./",
+        url: './',
         data:
             {
-                id: id
+                id: id,
             },
-        type: "PUT",
-        dataType: "json",
-        success: [function (result) {
+        type: 'PUT',
+        dataType: 'json',
+        success: [function(result) {
             if (result.result) {
                 location.href = `./update/${id}`;
             } else {
-                location.href = "./";
-                alert("삭제실패.");
+                location.href = './';
+                alert('삭제실패.');
             }
-        }]
+        }],
     });
 };
