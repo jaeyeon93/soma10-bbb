@@ -30,11 +30,10 @@ router.post('/update', function(req, res) {
     board.title = title;
     board.content = content;
     const username = board.username;
-    // 날짜 변경
+    // todo, 날짜 변경
     board.save(function(err) {
       if (err) res.status(500).json({error: 'failed to update'});
-      res.statusCode = 302;
-      res.setHeader('Location', `http://localhost:3000/todos/${username}`);
+      res.redirect(`/todos/${username}`);
       res.end();
     });
   });
