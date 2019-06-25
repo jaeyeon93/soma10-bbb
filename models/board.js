@@ -12,8 +12,14 @@ const boardSchema = new Schema(
     username: {type: String, required: true},
     title: {type: String, required: true},
     content: String,
-    createDate: {type: Date, default: Date.now}
-  }
+    createDate: {type: Date, default: Date.now},
+  },
+  {
+    timestamp: {
+      createdAt: 'created_at',
+      updatedAt: 'updated_at',
+    },
+  },
 );
 
 boardSchema.plugin(autoIncrement.plugin, {model: 'Board', field: 'boardId'});
