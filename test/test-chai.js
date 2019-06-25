@@ -1,9 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
-const should = chai.should();
-
-// Expect
 
 describe('#Expect test', () => {
   it('expect - Array', () => {
