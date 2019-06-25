@@ -18,3 +18,5 @@ lerna-debug.log*
 # Envfile
 
 .env
+
+package-lock.json
