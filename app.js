@@ -9,7 +9,7 @@ const logger = require('morgan');
 const db = require('./db/db');
 
 // 미리 구현한 라우팅 모듈을 가져온다.
-const indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const todoRouter = require('./routes/todos');
 const formRouter = require('./routes/form');
