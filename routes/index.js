@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/user.js');
 
-router.get('/', (req, res, next) => {
-
+router.get('/', (req, res) => {
   let userData = null;
 
   const rendering = () => {

@@ -2,50 +2,42 @@ const express = require('express');
 const router = express.Router();
 const Board = require('../models/board.js');
 
-router.post('/', function (req, res) {
+router.post('/save', function(req, res) {
+  Board.create(
+    {
+      username: req.body.username,
+      title: req.body.title,
+      content: req.body.content,
+      createDate: Date.now(),
+    },
 
-    const username = req.body.username;
-
-    console.log(username);
-
-    res.render('form.html', {username});
-
+    function(err) {
+      if (err) {
+        return res.status(500).send('Board 저장 실패');
+      } else {
+        res.redirect(`/todos/${req.body.username}`);
+      }
+    },
+  );
 });
 
-router.post('/save', function (req, res) {
+router.post('/update', function(req, res) {
+  const id = req.body.id;
+  const title = req.body.title;
+  const content = req.body.content;
 
-    Board.create({
-            username: req.body.username,
-            title: req.body.title,
-            content: req.body.content,
-            createDate: Date.now()
-        },
-
-        function (err, board) {
-            if (err) return res.status(500).send("Board 저장 실패");
-            else {
-
-                //todo, user 별로 list 페이지로 넘기기.
-                res.redirect(`/todos/${req.body.username}`);
-
-            }
-        }
-    );
-
-});
-
-router.get('/:username', function (req, res)  {
-
-    const boardId = req.params.boardId;
-
-    Board.find().where("boardId").equals(boardId)
-        .then(
-            (board) => {
-                console.log(board.toString());
-                res.render('form.html', {username: board.username});
-            }
-        )
-        .catch(e => res.status(500).send('board 조회 실패'));
+  Board.findOne({boardId: id}, function(err, board) {
+    board.title = title;
+    board.content = content;
+    const username = board.username;
+    // 날짜 변경
+    board.save(function(err) {
+      if (err) res.status(500).json({error: 'failed to update'});
+      res.statusCode = 302;
+      res.setHeader('Location', `http://localhost:3000/todos/${username}`);
+      res.end();
+    });
+  });
 });
 
 module.exports = router;
