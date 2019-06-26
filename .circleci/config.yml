@@ -5,7 +5,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:8
     steps:
-      -checkout
+      - checkout
       - run: |
         node ./bin/www
 
