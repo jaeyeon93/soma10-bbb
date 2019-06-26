@@ -10,7 +10,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/git/soma10-bbb
+    working_directory: ~/WebStormProjects/soma10-bbb
 
     steps:
       - checkout
@@ -31,6 +31,8 @@ jobs:
 
       # run tests!
       - run: npm run test
+
+      - run: npm run -s lint
   deploy:
     docker:
       - image: buildpack-deps:trusty
