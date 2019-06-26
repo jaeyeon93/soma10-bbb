@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 const userListClick = (username) => {
   $('#loginId').html(username);
   $('#loginModal').modal('show');
 };
 
+// eslint-disable-next-line no-unused-vars
 const deleteClick = (userId) => {
   $.ajax({
     url: './user/delete',
@@ -22,6 +24,7 @@ const deleteClick = (userId) => {
   });
 };
 
+// eslint-disable-next-line no-unused-vars
 const clickLogin = () => {
   const id = $('#loginId').text();
   const password = $('#loginPassword').val();
@@ -47,6 +50,7 @@ const clickLogin = () => {
   });
 };
 
+// eslint-disable-next-line no-unused-vars
 const clickRegister = () => {
   const id = $('#registerId').val();
   const username = $('#registerUsername').val();

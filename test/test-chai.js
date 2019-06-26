@@ -7,7 +7,7 @@ describe('#Expect test', () => {
     const arr = [1, 2, 3, 4, 5];
     expect(arr).to.have.lengthOf(5);
     expect(arr).to.be.not.empty;
-    expect(arr).to.have.ordered.members([1,2,5,3,4]);
+    expect(arr).to.have.ordered.members([1, 2, 5, 3, 4]);
   });
 
   it('expect - String', () => {
