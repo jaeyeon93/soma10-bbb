@@ -14,7 +14,7 @@ describe('Google main page', () => {
         .waitForElementVisible('body', 1000)
         .setValue('input[type=text]', 'nightwatch')
         .pause(1000)
-        .assert.containsText('#tsf > div:nth-child(2) > div > div.RNNXgb > div > div.a4bIc > input', 'nightwatch')
+        .assert.containsText('#searchform', 'nightwatch')
         .end(done);
     });
   });
