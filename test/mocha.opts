@@ -1,0 +1,4 @@
+--require should
+--reporter dot
+--uid tdd
+
