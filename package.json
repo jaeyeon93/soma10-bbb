@@ -24,8 +24,12 @@
     "pug": "^2.0.4"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^6.0.0",
-    "eslint-config-google": "^0.13.0"
+    "eslint-config-google": "^0.13.0",
+    "mocha": "^6.1.4",
+    "nightwatch": "^1.1.13",
+    "webdriver-manager": "^12.1.5"
   },
   "description": "* 'To Do List' 만들기",
   "main": "app.js",

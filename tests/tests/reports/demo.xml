@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="0">
+
+  <testsuite name="demo"
+    errors="1" failures="0" hostname="" id="" package="demo" skipped="1"
+    tests="0" time="0.000" timestamp="">
+  
+
+  
+
+  
+    
+    <testcase
+      name="사용자는 검색어를 입력 후 검색어가 포함된 자동 완성 리스트를 볼 수 있다." classname="demo">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
