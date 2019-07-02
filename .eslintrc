@@ -1,23 +1,26 @@
- {
-   "extends": "eslint-config-google",
-   "rules": {
-     "indent": [
-       "error",
-       2
-     ],
-     "semi": [
-       "error",
-       "always"
-     ],
-     "new-cap": "off"
-   },
-   "parserOptions": {
-     "ecmaVersion": 2018
-   },
-   "env": {
-     "es6": true,
-     "browser": true,
-     "node": true,
-     "mocha": true
-   }
- }
+{
+  "extends": "eslint-config-google",
+  "rules": {
+    "indent": [
+      "error",
+      2
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "new-cap": "off",
+    "no-multiple-empty-lines": [
+      2
+    ]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "mocha": true
+  }
+}

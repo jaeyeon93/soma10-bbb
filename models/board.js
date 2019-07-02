@@ -1,27 +1,40 @@
 const mongoose = require('mongoose');
 const autoIncrement = require('mongoose-auto-increment');
-const Schema = mongoose.Schema;
 const db = require('../db/db');
+
+const BoardSchema = new mongoose.Schema(
+  {
+    username:
+      {
+        type: String,
+        required: true,
+      },
+    title:
+      {
+        type: String,
+        required: true,
+      },
+    content: String,
+    createDate:
+      {
+        type: Date,
+        default: Date.now,
+      },
+  },
+  {
+    timestamp:
+      {
+        createdAt: 'created_at',
+        updatedAt: 'updated_at',
+      },
+  },
+);
 
 const connection = db;
 
 autoIncrement.initialize(connection);
+BoardSchema.plugin(autoIncrement.plugin, {model: 'Board', field: 'boardId'});
 
-const boardSchema = new Schema(
-  {
-    username: {type: String, required: true},
-    title: {type: String, required: true},
-    content: String,
-    createDate: {type: Date, default: Date.now},
-  },
-  {
-    timestamp: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at',
-    },
-  },
-);
+const Board = mongoose.model('board', BoardSchema);
 
-boardSchema.plugin(autoIncrement.plugin, {model: 'Board', field: 'boardId'});
-
-module.exports = mongoose.model('board', boardSchema);
+module.exports = Board;
