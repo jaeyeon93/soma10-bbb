@@ -20,3 +20,6 @@ lerna-debug.log*
 .env
 
 package-lock.json
+
+/tests/reports
+/tests/selenium-server.log
