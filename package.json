@@ -3,28 +3,49 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha --recursive tests",
+    "server": "http-server src"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
+    "debug": "~4.1.1",
     "dotenv": "^8.0.0",
-    "ejs": "~2.6.1",
-    "eslint": "3.x",
-    "express": "~4.16.1",
+    "ejs": "~2.6.2",
+    "eslint-config-standard": "^12.0.0",
+    "express": "~4.17.1",
     "glob": "^7.1.4",
-    "http-errors": "~1.6.3",
+    "http-errors": "~1.7.2",
+    "http-server": "^0.11.1",
     "moment": "^2.24.0",
     "mongoose": "^5.6.0",
     "mongoose-auto-increment": "^5.0.1",
     "morgan": "~1.9.1",
     "node": "^12.4.0",
-    "pug": "^2.0.3"
+    "pug": "^2.0.4",
+    "puppeteer": "^1.18.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^6.0.0",
     "eslint-config-google": "^0.13.0",
-    "nodemon": "^1.19.1"
-  }
+    "mocha": "^6.1.4",
+    "nightwatch": "^1.1.13",
+    "webdriver-manager": "^12.1.5"
+  },
+  "description": "* 'To Do List' 만들기",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkyounghwan/soma10-bbb.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkyounghwan/soma10-bbb/issues"
+  },
+  "homepage": "https://github.com/parkyounghwan/soma10-bbb#readme"
 }

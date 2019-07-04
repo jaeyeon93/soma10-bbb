@@ -1,21 +1,28 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user.js');
 
-router.get('/', (req, res, next) => {
-    let userData = null;
-    const rendering = () => {
-        res.render('index.html', {
-            title: 'UserList',
-            length: 5,
-            data: userData,
-        });
-    };
+const userController = require('../components/user/usersController');
+const UserService = require('../components/user/usersService');
 
-    User.find((err, user) => {
-        userData = user;
-        rendering();
+// users API controller
+router.use('/users', userController);
+
+router.get('/', (req, res) => {
+  let userData = null;
+
+  const rendering = () => {
+    res.render('index.html', {
+      title: 'UserList',
+      length: 5,
+      data: userData,
+
     });
+  };
+
+  UserService.getUsers().then((users) => {
+    userData = users;
+    rendering();
+  });
 });
 
 module.exports = router;

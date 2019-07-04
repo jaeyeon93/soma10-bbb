@@ -1,35 +1,54 @@
 const express = require('express');
 const router = express.Router();
-const TodosModel = require('../models/Todo');
-const moment = require('moment');
 
-router.get('/:username', (req, res, next) => {
+const BoardsService = require('../components/board/boardsService');
 
-    //TODO :: 재연형님 username 으로 테이블 다르게 보여주는거 해주시면 감사하곘습니다 .
-    const username = req.params.username;
+router.get('/:username', (req, res) => {
+  const username = req.params.username;
 
-    TodosModel.find({}, (err, todos) => {
-        console.log(todos[15].created_at);
-        console.log(todos[15].updated_at);
-        if (err) return res.status(500).send('Todos 조회 실패');
-        res.render('todos_list.html', {todos, moment});
-    });
-
+  BoardsService.getUserBoardAll(username)
+    .then((board) => {
+      res.render('todos_list.html', {board, username});
+    })
+    .catch(() => res.status(500).send('boards 조회 실패'));
 });
 
-router.get('/add', (req, res, next) => {
-    res.render('todos_add.html');
+router.get('/add/:username', (req, res) => {
+  const username = req.params.username;
+
+  res.render('form.html', {username: username});
 });
 
-router.post('/add', (req, res, next) => {
-    let todo = new TodosModel({
-        title: req.body.title,
-        contents: req.body.contents,
-        date: req.body.date,
+router.get('/update/:id', (req, res) => {
+  const id = req.params.id;
+
+  BoardsService.getUserBoard(id)
+    .then((data) => {
+      res.render('updateform.html', {
+        title: data.username,
+        data: data,
+        id: id,
+      });
+    })
+    .catch((err) => {
+      res.send(err);
     });
-    todo.save((err) => {
-        res.redirect('/todos/');
+});
+
+router.delete('/', (req, res) => {
+  const id = req.body.id;
+
+  BoardsService.deleteBoard(id)
+    .then(() => {
+      res.send({result: true});
+    })
+    .catch(() => {
+      res.status(500).send('board 삭제 실패');
     });
+});
+
+router.put('/', (req, res) => {
+  res.send({result: true});
 });
 
 module.exports = router;

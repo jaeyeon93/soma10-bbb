@@ -1,49 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous">
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-          crossorigin="anonymous">
-</head>
+<% include ./template/header.html %>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Project name</a>
-        </div>
 
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
-
-<!--Body part -->
 <div class="container-fluid">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">Todo List</div>
+        <div class="panel-heading"> Todo List <%= username %></div>
         <div class="panel-body">
-            <button type="button" class="btn btn-primary" onclick="location.href='/todos/add'">Todo작성하기</button>
+            <button type="button" class="btn btn-primary" onclick="location.href='/todos/add/<%= username %>'">
+                Todo작성하기
+            </button>
         </div>
 
         <!-- Table -->
@@ -53,34 +19,36 @@
                 <th>Index</th>
                 <th>Title</th>
                 <th>Contents</th>
-                <th>Date</th>
+                <th>username</th>
                 <th>Created_at</th>
-                <th>Updated_at</th>
-
+                <th>수정</th>
+                <th>삭제</th>
             </tr>
             </thead>
             <tbody>
-            <% for (let i = 0; i < todos.length; i++) { %>
+            <% for(var key in board) {%>
             <tr>
-                <th scope="row"><%= i %></th>
-                <td><%= todos[i].title %></td>
-                <td><%= todos[i].contents %></td>
-                <td><%= moment(todos[i].date).format('YYYY-MM-DD hh:mm:ss') %></td>
-                <td><%= moment(todos[i].created_at).format('YYYY-MM-DD hh:mm:ss') %></td>
-                <!--<td><%= moment(todos[i].updated_at).format('YYYY-MM-DD hh:mm:ss') %></td>-->
+                <th scope="row"><%= key%></th>
+                <td><%= board[key]["title"]%></td>
+                <td><%= board[key]["content"]%></td>
+                <td><%= board[key]["username"]%></td>
+                <td><%= board[key]["createDate"]%></td>
+                <td>
+                    <button type="button" class="btn btn-success" onclick="todoUpdate('<%= board[key]["boardId"]%>',`<%= username %>`)">수정</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="todoDelete('<%= board[key]["_id"]%>')">삭제</button>
+                </td>
             </tr>
-            <% } %>
+            <% }%>
             </tbody>
 
         </table>
     </div>
 </div>
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!--<script src="/js/bootstrap.min.js"></script>-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
 </body>
-</html>
+
+<script src="/javascript/formMethod.js"></script>
+
+<% include ./template/footer.html %>
