@@ -1,7 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 const formCancel = () => {
   history.back();
 };
 
+// eslint-disable-next-line no-unused-vars
 const todoDelete = (id) => {
   console.log(id);
   $.ajax({
@@ -23,6 +25,7 @@ const todoDelete = (id) => {
   });
 };
 
+// eslint-disable-next-line no-unused-vars
 const todoUpdate = (id, username) => {
   console.log(id);
   console.log(username);
