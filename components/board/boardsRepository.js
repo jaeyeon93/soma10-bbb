@@ -11,20 +11,15 @@ const getUserBoard = (id) => {
   return Board.findOne(modelParams);
 };
 
-const saveBoard = (username, title, content) => {
-  const board = {
-    username: username,
-    title: title,
-    content: content,
-    createDate: Date.now(),
-  };
-  const modelParams = Object.assign({}, board);
+const saveBoard = (post) => {
+  const createDate = {createDate: Date.now()};
+  const modelParams = Object.assign(post, createDate);
 
   return Board.create(modelParams);
 };
 
-const updateBoard = (id, title, content) => {
-  return getUserBoard(id)
+const updateBoard = (title, content, boardId) => {
+  return getUserBoard(boardId)
     .then((board) => {
       board.title = title;
       board.content = content;

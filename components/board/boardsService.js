@@ -1,19 +1,19 @@
 const BoardsRepository = require('./boardsRepository');
 
-const getUserBoardAll = (params) => {
-  return BoardsRepository.getUserBoardAll(params);
+const getUserBoardAll = (username) => {
+  return BoardsRepository.getUserBoardAll(username);
 };
 
-const getUserBoard = (params) => {
-  return BoardsRepository.getUserBoard(params);
+const getUserBoard = (boardId) => {
+  return BoardsRepository.getUserBoard(boardId);
 }
 
-const saveBoard = (params1, params2, params3) => {
-  return BoardsRepository.saveBoard(params1, params2, params3);
+const saveBoard = (board) => {
+  return BoardsRepository.saveBoard(board);
 }
 
-const updateBoard = (params1, params2, params3) => {
-  return BoardsRepository.updateBoard(params1, params2, params3);
+const updateBoard = (title, content, boardId) => {
+  return BoardsRepository.updateBoard(title, content, boardId);
 }
 
 const deleteBoard = (params) => {

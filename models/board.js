@@ -4,29 +4,11 @@ const db = require('../db/db');
 
 const BoardSchema = new mongoose.Schema(
   {
-    username:
-      {
-        type: String,
-        required: true,
-      },
-    title:
-      {
-        type: String,
-        required: true,
-      },
+    username: {type: String, required: true},
+    title: {type: String, required: true},
     content: String,
-    createDate:
-      {
-        type: Date,
-        default: Date.now,
-      },
-  },
-  {
-    timestamp:
-      {
-        createdAt: 'created_at',
-        updatedAt: 'updated_at',
-      },
+    createDate: {type: Date, default: Date.now},
+    modified: {type: Date, default: Date.now},
   },
 );
 

@@ -3,4 +3,40 @@ const router = express.Router();
 
 const BoardsService = require('./boardsService');
 
-// todo, REST API
+/**
+ * @api {get} /rest/todos/all Get All Board
+ */
+router.get('/all/:username', (req, res, next) => {
+  const username = req.params.username;
+
+  BoardsService.getUserBoardAll(username)
+    .then((boards) => {
+      res.send(boards);
+    })
+    .catch((e) => {
+      res.send(e);
+    });
+});
+
+/**
+ * @api {get} /rest/todos/one Get All Board
+ */
+router.get('/one/:id', (req, res, next) => {
+  const id = req.params.id;
+
+  BoardsService.getUserBoard(id)
+    .then((board) => {
+      res.send(board);
+    })
+    .catch((e) => {
+      res.send(e);
+    });
+});
+
+// todo, delete
+
+// todo, update
+
+// todo, save
+
+module.exports = router;
