@@ -19,14 +19,16 @@ const saveBoard = (post) => {
 };
 
 const updateBoard = (title, content, boardId) => {
-  return getUserBoard(boardId)
-    .then((board) => {
-      board.title = title;
-      board.content = content;
+  const query = {$set: {title: title, content: content}};
 
-      board.save();
-    })
-    .catch((e) => console.log(e));
+  return Board.updateOne({boardId: boardId}, query, (err) => {
+    if (err) {
+      console.error('UpdateOne Error', err);
+      return;
+    }
+
+    console.log('UpdateOne Success');
+  });
 };
 
 const deleteBoard = (params) => {

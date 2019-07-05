@@ -17,16 +17,15 @@ router.post('/save', (req, res, next) => {
     });
 });
 
-router.put('/update', function(req, res) {
+router.post('/update', function(req, res) {
   const username = req.body.username;
   const title = req.body.title;
   const content = req.body.content;
   const boardId = req.body.boardId;
 
   BoardsService.updateBoard(title, content, boardId)
-    .then((result) => {
-      // res.redirect(`/todos/${username}`);
-      res.send(result);
+    .then(() => {
+      res.redirect(`/todos/${username}`);
     })
     .catch(() => {
       res.status(500).json({error: 'failed to update'});

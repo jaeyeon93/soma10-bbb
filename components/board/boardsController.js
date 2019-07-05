@@ -36,6 +36,19 @@ router.get('/one/:id', (req, res, next) => {
 // todo, delete
 
 // todo, update
+router.put('/update', (req, res, next) => {
+  const title = req.params.title;
+  const content = req.params.content;
+  const boardId = req.params.boardId;
+
+  BoardsService.updateBoard(title, content, boardId)
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((e) => {
+      res.send(e);
+    });
+})
 
 // todo, save
 
