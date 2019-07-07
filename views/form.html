@@ -10,6 +10,8 @@
             <h2><%= username %></h2>
             <form class="form-container" action="/form/save" method="post">
                 <table>
+                    <input type="hidden" name="username" value="<%= username %>"/>
+
                     <label>title </label>
                     <input class="form-title" type="text" name="title" value="" placeholder="제목을 입력하세요."/>
                     <br/>
@@ -17,8 +19,6 @@
                     <label>content</label>
                     <textarea class="form-content" name="content" rows="10" value="" placeholder="내용을 입력하세요."></textarea>
                     <br>
-
-                    <input type="hidden" name="username" value="<%= username %>"/>
 
                     <button class="btn btn-primary">저장</button>
                     <button type="button" class="btn btn-danger" id="form-cancel-btn" onclick="formCancel();">취소
@@ -31,8 +31,9 @@
     </div>
 </div>
 
+<footer>
+    <script src="/javascript/formMethod.js"></script>
+    <% include ./template/footer.html %>
+
 </body>
-
-<script src="/javascript/formMethod.js"></script>
-
-<% include ./template/footer.html %>
+</html>

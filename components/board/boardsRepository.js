@@ -11,27 +11,24 @@ const getUserBoard = (id) => {
   return Board.findOne(modelParams);
 };
 
-const saveBoard = (username, title, content) => {
-  const board = {
-    username: username,
-    title: title,
-    content: content,
-    createDate: Date.now(),
-  };
-  const modelParams = Object.assign({}, board);
+const saveBoard = (post) => {
+  const createDate = {createDate: Date.now()};
+  const modelParams = Object.assign(post, createDate);
 
   return Board.create(modelParams);
 };
 
-const updateBoard = (id, title, content) => {
-  return getUserBoard(id)
-    .then((board) => {
-      board.title = title;
-      board.content = content;
+const updateBoard = (title, content, boardId) => {
+  const query = {$set: {title: title, content: content}};
 
-      board.save();
-    })
-    .catch((e) => console.log(e));
+  return Board.updateOne({boardId: boardId}, query, (err) => {
+    if (err) {
+      console.error('UpdateOne Error', err);
+      return;
+    }
+
+    console.log('UpdateOne Success');
+  });
 };
 
 const deleteBoard = (params) => {

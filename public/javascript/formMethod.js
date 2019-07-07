@@ -23,22 +23,19 @@ const todoDelete = (id) => {
   });
 };
 
-const todoUpdate = (id, username) => {
-  console.log(id);
-  console.log(username);
-
+const todoUpdate = (boardId, username) => {
   $.ajax({
     url: './',
     data:
       {
-        id: id,
+        boardId: boardId,
         username: username,
       },
     type: 'PUT',
     dataType: 'json',
     success: [function(result) {
       if (result.result) {
-        location.href = `./update/${id}`;
+        location.href = `./update/${boardId}`;
       } else {
         location.href = './';
         alert('삭제실패.');
