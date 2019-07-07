@@ -26,11 +26,13 @@ const todoDelete = (id) => {
 const todoUpdate = (id, username) => {
   console.log(id);
   console.log(username);
+
   $.ajax({
     url: './',
     data:
       {
         id: id,
+        username: username,
       },
     type: 'PUT',
     dataType: 'json',

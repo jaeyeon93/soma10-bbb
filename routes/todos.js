@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const boardModel = require('../models/board');
+
+const BoardsService = require('../components/board/boardsService');
 
 router.get('/:username', (req, res) => {
   const username = req.params.username;
 
-  boardModel.find().where('username').equals(username)
+  BoardsService.getUserBoardAll(username)
     .then((board) => {
       res.render('todos_list.html', {board, username});
     })
@@ -21,27 +22,29 @@ router.get('/add/:username', (req, res) => {
 router.get('/update/:id', (req, res) => {
   const id = req.params.id;
 
-  boardModel.findOne({boardId: id}, function(err, data) {
-    if (err) {
-      // todo, eslint-disable-next-line no-empty
-
-    } else {
+  BoardsService.getUserBoard(id)
+    .then((data) => {
       res.render('updateform.html', {
         title: data.username,
         data: data,
         id: id,
       });
-    }
-  });
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 router.delete('/', (req, res) => {
   const id = req.body.id;
 
-  boardModel.deleteOne({_id: id}, function(err) {
-    if (err) return res.status(500).send('board 삭제 실패');
-    res.send({result: true});
-  });
+  BoardsService.deleteBoard(id)
+    .then(() => {
+      res.send({result: true});
+    })
+    .catch(() => {
+      res.status(500).send('board 삭제 실패');
+    });
 });
 
 router.put('/', (req, res) => {

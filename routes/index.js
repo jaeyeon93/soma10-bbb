@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user.js');
+
+const userController = require('../components/user/usersController');
+const UserService = require('../components/user/usersService');
+
+// users API controller
+router.use('/users', userController);
 
 router.get('/', (req, res) => {
   let userData = null;
@@ -14,8 +19,8 @@ router.get('/', (req, res) => {
     });
   };
 
-  User.find((err, user) => {
-    userData = user;
+  UserService.getUsers().then((users) => {
+    userData = users;
     rendering();
   });
 });
