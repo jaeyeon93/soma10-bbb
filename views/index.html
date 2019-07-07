@@ -6,34 +6,49 @@
 <% include ./modal/loginModal.html %>
 
 <div class="row">
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+
+    </div>
+
     <div class="col-md-4">
         <div class="panel panel-default">
-            <div class="panel-heading">User List</div>
-            <% for(var key in data) {%>
-            <a data-toggle="modal" onclick="userListClick('<%= data[key]["id"] %>');">
-            <div class="panel-body border" style="color: #CDDC39; text-align: center;margin: 10px 10px 10px 10px;display: inline-block;">
-                <p style="text-align: center; margin:10px 0px 0px 0px">
-                    <%= data[key]["username"] %>
-                </p>
+            <div class="panel-heading">
+                User List
             </div>
+
+            <% for(var key in data) {%>
+
+            <a data-toggle="modal" onclick="userListClick('<%= data[key][`id`] %>');">
+                <div class="panel-body border" id="index-user-card">
+                    <p>
+                        <%= data[key][`username`] %>
+                    </p>
+                </div>
             </a>
-            <button type="button" class="btn-small" onclick="deleteClick('<%= data[key]["id"] %>')">Del</button>
+
+            <button type="button" class="btn-small" onclick="deleteClick('<%= data[key][`id`] %>')">
+                Del
+            </button>
+
             <% } %>
+
             <a data-toggle="modal" href="#registerModal">
-                <div class="panel-body border" style="text-align: center;margin: 10px 10px 10px 10px;display: inline-block;">
-                    <p style="text-align: center; margin:10px 0px 10px 0px">
+                <div class="panel-body border" id="index-user-add">
+                    <p>
                         Add User !
                     </p>
                 </div>
             </a>
         </div>
     </div>
-    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+
+    </div>
 </div>
 
 <footer>
-    <script src="/javascript/indexMethod.js"></script>
+    <script src="/javascript/formMethod.js"></script>
     <% include ./template/footer.html %>
 
 </body>

@@ -4,15 +4,18 @@
 
 <div class="container-fluid">
     <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"> Todo List <%= username %></div>
+
+        <div class="panel-heading">
+            Todo List <%= username %>
+        </div>
+
         <div class="panel-body">
-            <button type="button" class="btn btn-primary" onclick="location.href='/todos/add/<%= username %>'">
+            <button type="button" class="btn btn-primary"
+                    onclick="location.href='/todos/add/<%= username %>'">
                 Todo작성하기
             </button>
         </div>
 
-        <!-- Table -->
         <table class="table">
             <thead>
             <tr>
@@ -25,6 +28,7 @@
                 <th>삭제</th>
             </tr>
             </thead>
+
             <tbody>
             <% for(var key in board) {%>
             <tr>
@@ -34,16 +38,22 @@
                 <td><%= board[key]["username"]%></td>
                 <td><%= board[key]["createDate"]%></td>
                 <td>
-                    <button type="button" class="btn btn-success" onclick="todoUpdate('<%= board[key]["boardId"]%>',`<%= username %>`)">수정</button>
+                    <button type="button" class="btn btn-success"
+                            onclick="todoUpdate('<%= board[key][`boardId`]%>',`<%= username %>`)">
+                        수정
+                    </button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger" onclick="todoDelete('<%= board[key]["_id"]%>')">삭제</button>
+                    <button type="button" class="btn btn-danger"
+                            onclick="todoDelete('<%= board[key][`_id`]%>')">
+                        삭제
+                    </button>
                 </td>
             </tr>
             <% }%>
             </tbody>
-
         </table>
+
     </div>
 </div>
 
