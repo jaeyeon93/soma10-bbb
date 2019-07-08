@@ -6,10 +6,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 // morgan : 클라이언트의 HTTP 요청 정보를 로깅하기 위한 모듈
 const logger = require('morgan');
+// eslint-disable-next-line no-unused-vars
 const db = require('./db/db');
 
 // 미리 구현한 라우팅 모듈을 가져온다.
-var indexRouter = require('./routes/index');
+const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const todoRouter = require('./routes/todos');
 const formRouter = require('./routes/form');

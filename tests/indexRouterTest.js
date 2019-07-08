@@ -19,10 +19,11 @@ const {expect} = require('chai');
 
 describe('index페이지 E2E테스트', () => {
   before(async () => {
-    let browser = await puppeteer.launch();
-    let page = await browser.newPage();
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
     console.log('before동작');
-    console.log('browser : ',)
+    console.log('browser : ', browser);
+    console.log('page : ', page);
   });
 
   it('main 페에지가 띄어질 것이다.', async () => {
