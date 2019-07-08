@@ -23,16 +23,14 @@ jobs:
             - v1-dependencies-
 
       - run: npm install
-
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm run test
-
-      - run: npm run -s lint
+#      - run: npm run test
+#      - run: npm run -s lint
   deploy:
     docker:
       - image: buildpack-deps:trusty
