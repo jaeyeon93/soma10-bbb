@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const userController = require('../components/user/usersController');
-const UserService = require('../components/user/usersService');
+const UsersController = require('../components/user/usersController');
+const BoardsController = require('../components/board/boardsController');
+
+const UsersService = require('../components/user/usersService');
 
 // users API controller
-router.use('/users', userController);
+router.use('/rest/users', UsersController);
+router.use('/rest/todos', BoardsController);
 
 router.get('/', (req, res) => {
   let userData = null;
@@ -19,7 +22,7 @@ router.get('/', (req, res) => {
     });
   };
 
-  UserService.getUsers().then((users) => {
+  UsersService.getUsers().then((users) => {
     userData = users;
     rendering();
   });

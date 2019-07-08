@@ -19,15 +19,15 @@ router.get('/add/:username', (req, res) => {
   res.render('form.html', {username: username});
 });
 
-router.get('/update/:id', (req, res) => {
-  const id = req.params.id;
+router.get('/update/:boardId', (req, res) => {
+  const boardId = req.params.boardId;
 
-  BoardsService.getUserBoard(id)
+  BoardsService.getUserBoard(boardId)
     .then((data) => {
-      res.render('updateform.html', {
-        title: data.username,
+      res.render('update_form.html', {
+        boardId: boardId,
+        username: data.username,
         data: data,
-        id: id,
       });
     })
     .catch((err) => {
