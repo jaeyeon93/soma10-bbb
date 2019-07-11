@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="demo"
+    errors="1" failures="0" hostname="" id="" package="demo" skipped="1"
+    tests="1" time="9.128" timestamp="">
+  
+    <testcase name="Demo test google" classname="demo" time="9.128" assertions="0">
+    </testcase>
+  
+
+  
+
+  
+    
+    <testcase
+      name="step two click input" classname="demo">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

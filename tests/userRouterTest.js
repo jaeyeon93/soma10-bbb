@@ -1,16 +1,9 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = chai.expect;
-const app = require('../app');
 chai.use(chaiHttp);
 
 const url = 'http://localhost:3000/users';
-
-before(() => {
-  app.on('adminMongoStarted', () => {
-    console.log('test에서 서버 실행중');
-  });
-});
 
 describe('Request test', () => {
   it('request to server', (done) => {
