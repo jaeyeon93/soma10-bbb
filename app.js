@@ -5,8 +5,7 @@ const path = require('path');
 // cookie-parser: 접속한 클라이언트의 쿠키 정보에 접근하기 위한 모듈
 const cookieParser = require('cookie-parser');
 // morgan : 클라이언트의 HTTP 요청 정보를 로깅하기 위한 모듈
-const morgan = require('morgan');
-const {stream} = require('./config/winston');
+const logger = require('morgan');
 // eslint-disable-next-line no-unused-vars
 const db = require('./db/db');
 
@@ -24,8 +23,7 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
-
-app.use(morgan('combined', {stream}));
+app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
@@ -57,4 +55,9 @@ app.use((err, req, res, next) => {
   res.render('error.html');
 });
 
+
+app.listen(() => {
+  console.log('App has started');
+  app.emit('appstated');
+})
 module.exports = app;

@@ -7,6 +7,9 @@ const conn = mongoose.createConnection(MONGO_URI);
 
 mongoose.connect(MONGO_URI, {useNewUrlParser: true})
   .then(() => console.log('Connected to mongod server'))
-  .catch((e) => console.error(e));
+  .catch((e) => {
+    console.error(e);
+  });
+
 
 module.exports = conn;
