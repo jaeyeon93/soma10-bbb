@@ -33,6 +33,7 @@
     "eslint-config-google": "^0.13.0",
     "mocha": "^6.1.4",
     "nightwatch": "^1.1.13",
+    "supertest": "^4.0.2",
     "webdriver-manager": "^12.1.5"
   },
   "description": "* 'To Do List' 만들기",
