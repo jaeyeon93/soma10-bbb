@@ -9,10 +9,7 @@
       "error",
       "always"
     ],
-    "new-cap": "off",
-    "no-multiple-empty-lines": [
-      2
-    ]
+    "new-cap": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2018

@@ -12,20 +12,25 @@
         <div class="col-md-6">
             <h2><%= username %></h2>
 
-            <form class="form-container" action="/form/save" method="post">
+            <form class="form-container" action="/form/update" method="post">
                 <table>
+                    <input type="hidden" name="boardId" value="<%= boardId %>"/>
                     <input type="hidden" name="username" value="<%= username %>"/>
 
                     <label>title </label>
-                    <input class="form-title" type="text" name="title" value="" placeholder="제목을 입력하세요."/>
+                    <input class="form-title" type="text" name="title" placeholder="제목을 입력하세요." value="<%= data['title']%>"/>
+
                     <br/>
 
                     <label>content</label>
-                    <textarea class="form-content" name="content" rows="10" value="" placeholder="내용을 입력하세요."></textarea>
+                    <textarea class="form-content" name="content" rows="10" placeholder="내용을 입력하세요.">
+                        <%= data['content']%>
+                    </textarea>
+
                     <br>
 
-                    <button class="btn btn-primary">
-                        저장
+                    <button class="btn btn-success">
+                        수정
                     </button>
 
                     <button type="button" class="btn btn-danger" id="form-cancel-btn" onclick="formCancel();">
@@ -43,7 +48,7 @@
 </div>
 
 <footer>
-    <script src="/javascript/formMethod.js"></script>
+    <script src="/javascript/formMethod.js"/>
     <% include ./template/footer.html %>
 
 </body>

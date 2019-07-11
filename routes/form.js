@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
+const Board = require('../models/board');
 const BoardsService = require('../components/board/boardsService');
 
-router.post('/save', function(req, res) {
-  const username = req.body.username;
-  const title = req.body.title;
-  const content = req.body.content;
+router.post('/save', (req, res, next) => {
+  const board = new Board(req.body);
 
-  BoardsService.saveBoard(username, title, content)
-    .then(() => {
-      res.redirect(`/todos/${username}`);
+  BoardsService.saveBoard(board)
+    .then((result) => {
+      res.redirect(`/todos/${req.body.username}`);
+      // res.send(result);
     })
     .catch(() => {
       res.status(500).send('board 저장 실패');
@@ -18,12 +18,12 @@ router.post('/save', function(req, res) {
 });
 
 router.post('/update', function(req, res) {
-  const id = req.body.id;
+  const username = req.body.username;
   const title = req.body.title;
   const content = req.body.content;
-  const username = req.body.username;
+  const boardId = req.body.boardId;
 
-  BoardsService.updateBoard(id, title, content)
+  BoardsService.updateBoard(title, content, boardId)
     .then(() => {
       res.redirect(`/todos/${username}`);
     })
