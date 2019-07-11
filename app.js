@@ -55,4 +55,9 @@ app.use((err, req, res, next) => {
   res.render('error.html');
 });
 
+
+app.listen(() => {
+  console.log('App has started');
+  app.emit('appstated');
+})
 module.exports = app;

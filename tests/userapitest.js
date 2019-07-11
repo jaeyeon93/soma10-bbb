@@ -1,23 +1,33 @@
-require('dotenv').config();
 const request = require('supertest');
 const app = require('../app');
+const agent = request.agent(app);
 const expect = require('chai').expect;
-const mongoose = require('mongoose');
-const MONGO_URI = `${process.env.DB_SCHEMA}${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_URL}`;
-const HOST = 'http://localhost:3000';
-describe('Routing and Integration Test', () => {
-  before((done) => {
-    if (mongoose.connection.db) return done();
-    mongoose.connect(MONGO_URI, done);
-  });
 
-  it('요청 테스트', (done) => {
-    request(`${process.env.HOST}:${process.env.PORT}/users`)
-      .expect(200, done);
-  });
-  after(() => {
-    mongoose.connection.close(() => {
-      console.log('Test database connection closed');
-    });
+before(() => {
+  app.on('appStarted', () => {
+
   });
 });
+
+describe('app.emit사용', () => {
+  it('테스트 1', (done) => {
+    agent
+      .get('/users')
+      .expect(200, done);
+  });
+
+  it('request to server', (done) => {
+    agent
+      .get('/users')
+      .end((err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        console.log('body : ', res.body);
+        const users = res.body;
+        expect(users[0]).to.haveOwnProperty('id').equal('jaeyeon93');
+        expect(users[1]).to.haveOwnProperty('id').equal('tjddus1109');
+        expect(users[2]).to.haveOwnProperty('id').equal('parkyounghwan');
+        done();
+      });
+  });
+})
